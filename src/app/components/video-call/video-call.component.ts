@@ -807,6 +807,8 @@ export class VideoCallComponent implements AfterViewInit {
     this.isMuted = !this.isMuted;
     const audioTracks = this.localStream.getAudioTracks();
     console.log(audioTracks);
+    console.log(this.localStream.getAudioTracks());
+
     if (audioTracks.length > 0) {
       audioTracks[0].muted=!this.isMuted;
       audioTracks[0].enabled = !this.isMuted; // Mute/unmute audio track
