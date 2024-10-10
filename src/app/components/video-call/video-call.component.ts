@@ -549,7 +549,10 @@ export class VideoCallComponent implements AfterViewInit {
 
   async startLocalVideo() {
     try {
-      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+      const mediaStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: {
+    echoCancellation: true,  // Enable echo cancellation
+    noiseSuppression: true    // Optionally suppress noise
+  } });
       this.localStream = mediaStream;
 
       if (this.localVideoRef && this.localVideoRef.nativeElement) {
