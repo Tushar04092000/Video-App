@@ -554,6 +554,9 @@ export class VideoCallComponent implements AfterViewInit {
 
       if (this.localVideoRef && this.localVideoRef.nativeElement) {
         this.localVideoRef.nativeElement.srcObject = this.localStream;
+        this.localVideoRef.nativeElement.muted = true; // Mute the local audio playback
+  this.localVideoRef.nativeElement.volume = 0;   // Set volume to 0 just in case
+
         console.log("Local video stream is set!");
       }
       if (this.newRoomId !== '') {
