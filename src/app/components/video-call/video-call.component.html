@@ -16,13 +16,13 @@
     </div>
     <div *ngIf="roomId">
         <div class="d-flex">
-            {{roomId}}
+            <!-- {{roomId}} -->
             <div>
                 <div class="parent-div">
                     <div class="background-div bg-dark">
                         <video #remoteVideo autoplay playsinline [hidden]="!mIsRemoteUserVideoOn"
-                            [muted]="isMuted"></video>
-                        <button class="mic-button mic-button1" *ngIf="mIsRemoteUserMuted">
+                            [volume]="mRemoteVideoVolume"></video>
+                        <button class="mic-button mic-button1" *ngIf="!mIsRemoteUserMuted">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-mic-mute" viewBox="0 0 16 16">
                                 <path
@@ -31,7 +31,7 @@
                                     d="m9.486 10.607-.748-.748A2 2 0 0 1 6 8v-.878l-1-1V8a3 3 0 0 0 4.486 2.607m-7.84-9.253 12 12 .708-.708-12-12z" />
                             </svg>
                         </button>
-                        <button class="mic-button mic-button2" *ngIf="!mIsRemoteUserVideoOn">
+                        <button class="mic-button mic-button2" *ngIf="mIsRemoteUserVideoOn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-camera-video-off" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -71,7 +71,7 @@
                     </button>
 
                     <button (click)="toggleVideo()" class="btn btn-outline-primary">
-                        <span *ngIf="isVideoEnabled===true">
+                        <span *ngIf="isVideoEnabled===false">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-camera-video" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
@@ -79,7 +79,7 @@
                             </svg>
                         </span>
 
-                        <span *ngIf="isVideoEnabled===false">
+                        <span *ngIf="isVideoEnabled===true">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-camera-video-off" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd"
