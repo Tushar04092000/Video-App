@@ -316,7 +316,9 @@ export class VideoCallComponent implements AfterViewInit {
     const audioTracks = this.localStream.getAudioTracks();
     console.log(audioTracks);
     if (audioTracks.length > 0) {
-      audioTracks[0].enabled = !this.isMuted; // Mute/unmute audio track
+      audioTracks[0].enabled = !this.isMuted;
+      this.setRemoteVideoVolume();
+      // if() // Mute/unmute audio track
     }
 
     this.signalingServer.send(JSON.stringify({
@@ -326,6 +328,13 @@ export class VideoCallComponent implements AfterViewInit {
     }));
 
     console.log("User muted:", this.isMuted);
+  }
+
+  mRemoteVideoVolume: any = 1;
+
+  setRemoteVideoVolume() {
+    // const videoElement = this.remoteVideo.nativeElement;
+    this.mRemoteVideoVolume = this.isMuted ? 0 : 1;  // Volume ranges from 0 to 1
   }
 
   toggleVideo() {
