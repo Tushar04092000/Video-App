@@ -21,7 +21,7 @@
                 <div class="parent-div">
                     <div class="background-div bg-dark">
                         <video #remoteVideo autoplay playsinline [hidden]="!mIsRemoteUserVideoOn"
-                            [muted]="isMuted" [volume]="mIsRemoteUserMuted?0:1"></video>
+                            [muted]="isMuted"></video>
                         <button class="mic-button mic-button1" *ngIf="mIsRemoteUserMuted">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-mic-mute" viewBox="0 0 16 16">
@@ -42,7 +42,7 @@
 
 
                     <div class="overlay-div">
-                        <video #localVideo autoplay playsinline [muted]="true"></video>
+                        <video #localVideo autoplay playsinline [muted]="true" [volume]="mIsRemoteUserMuted?0:1"></video>
                     </div>
                 </div>
 
